@@ -102,14 +102,10 @@
                 class="col-6"
                 *ngFor="
                   let verify of selectedObject?.verification;
-                  let i = index
-                "
-              >
+                  let i = index ">
                 <p>
                   <mat-checkbox
-                    formControlName="{{ verify?.contolName }}"
-                    required
-                  >
+                    formControlName="{{ verify?.contolName }}" >
                     {{ verify.value }}
                   </mat-checkbox>
                 </p>
@@ -126,7 +122,8 @@
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
-       
+      {{counterPresentage | json}}
+
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button (click)="stepper.reset()">Reset</button>

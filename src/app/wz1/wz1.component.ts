@@ -18,7 +18,8 @@ export class Wz1Component implements OnInit {
   isLinear = false;
   selected = '';
   selectedObject: any;
-  // counterPresentage : {iv: number, v : number, p : number} = 
+
+  counterPresentage : { iv: number; v: number; p: number; } | undefined ;
 
   documentGroup: FormGroup = new FormGroup({});
   verificationGroup: FormGroup = new FormGroup({});
@@ -154,7 +155,7 @@ export class Wz1Component implements OnInit {
   } 
 
 
-  check() : {iv: number, v : number, p : number}{
+  check(){
     const documentGroupcontrols = this.documentGroup.controls ;     
     const verificationGroupcontrols = this.verificationGroup.controls ;     
     const invalidArr = [];
@@ -178,8 +179,8 @@ export class Wz1Component implements OnInit {
     }
     console.log(`valid count : ${validArr.length}`)
     console.log(`invalid count : ${invalidArr.length}`)
-
-    return {iv :validArr.length, v : invalidArr.length, p:100 }
+    this.counterPresentage = {iv :validArr.length, v : invalidArr.length, p:(validArr.length/(validArr.length+invalidArr.length)*100)  }
+  
   }
 
   ngOnInit(): void {}
