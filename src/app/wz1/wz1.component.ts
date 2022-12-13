@@ -1,5 +1,5 @@
 import { AutofillMonitor } from '@angular/cdk/text-field';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -18,7 +18,8 @@ export class Wz1Component implements OnInit {
   isLinear = false;
   selected = '';
   selectedObject: any;
-  // counterPresentage : {iv: number, v : number, p : number} = 
+  // public percentage : number = 0; 
+  @Input() percentage?: string;
 
   documentGroup: FormGroup = new FormGroup({});
   verificationGroup: FormGroup = new FormGroup({});
@@ -120,7 +121,7 @@ export class Wz1Component implements OnInit {
   ];
 
   constructor(
-    private _formBuilder: FormBuilder, 
+    private _formBuilder: FormBuilder,
   ) {
     this.documentGroup = this._formBuilder.group({});
   }
@@ -134,11 +135,7 @@ export class Wz1Component implements OnInit {
   genarateForm(selectedObject: any) {
     this.documentGroup.reset();
     this.verificationGroup.reset();
-
-
-    console.log(selectedObject);
     selectedObject?.checkDoc.forEach((element: any) => {
-      console.log(element.contolName);
       this.documentGroup?.addControl(
         element?.contolName,
         new FormControl('', Validators.required)
@@ -151,38 +148,44 @@ export class Wz1Component implements OnInit {
         new FormControl('', Validators.required)
       );
     });
-  } 
+  }
 
-
-  check() : {iv: number, v : number, p : number}{
-    const documentGroupcontrols = this.documentGroup.controls ;     
-    const verificationGroupcontrols = this.verificationGroup.controls ;     
+  public onStepChange(event: any): void {
+    this.percentage = this.check().toString();
+  }
+  get formattedDashArray() {
+    return this.percentage + ', 100';
+  }
+  check(): number {
+    const documentGroupcontrols = this.documentGroup.controls;
+    const verificationGroupcontrols = this.verificationGroup.controls;
     const invalidArr = [];
     const validArr = [];
 
 
     for (const name in documentGroupcontrols) {
       if (documentGroupcontrols[name].status === 'INVALID') {
-         invalidArr.push(name);
-      }else{
+        invalidArr.push(name);
+      } else {
         validArr.push(name);
       }
     }
 
     for (const name in verificationGroupcontrols) {
       if (verificationGroupcontrols[name].status === 'INVALID') {
-         invalidArr.push(name);
-      }else{
+        invalidArr.push(name);
+      } else {
         validArr.push(name);
       }
     }
     console.log(`valid count : ${validArr.length}`)
     console.log(`invalid count : ${invalidArr.length}`)
-
-    return {iv :validArr.length, v : invalidArr.length, p:100 }
+    const presentage = Math.round(validArr.length / (validArr.length + invalidArr.length) * 100)
+    console.log(presentage)
+    return presentage
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // checkDoc = this._formBuilder.group({
   //   requestLetter: [false, Validators.required],
@@ -211,7 +214,7 @@ export class Wz1Component implements OnInit {
   //   verification: this.verification,
   // });
 
-  onSubmit() {}
+  onSubmit() { }
 }
 
 function ViewChild(arg0: string, arg1: { read: any }) {
