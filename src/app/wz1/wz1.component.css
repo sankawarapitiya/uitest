@@ -1,0 +1,21 @@
+    mat-form-field {
+    overflow: auto;
+    width: 100%;
+}
+
+.form-padding{
+    padding: 2px;
+    margin: 20px;
+}
+.text-bold{ 
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mat-select-panel mat-option.mat-option {
+    height: unset;
+  }
+  
+.mat-option-text.mat-option-text {
+    white-space: normal;
+  }
