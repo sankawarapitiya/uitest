@@ -1,40 +1,43 @@
     mat-form-field {
-        overflow: auto;
-        width: 100%;
+      overflow: auto;
+      width: 100%;
     }
 
     .form-padding {
-        padding: 2px;
-        margin: 20px;
+      padding: 2px;
+      margin: 20px;
     }
 
     .text-bold {
-        font-size: large;
-        font-family: Arial, Helvetica, sans-serif;
+      font-size: large;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    .mat-select-panel mat-option.mat-option {
-        height: unset;
+    */ mat-select-panel mat-option.mat-option {
+      height: unset;
     }
 
     .mat-option-text.mat-option-text {
-        white-space: normal;
+      white-space: normal;
     }
 
 
     .figure {
-        width: 100%;
-        padding: 0;
-        margin: 0 0 .5rem 0;
+      width: 100%;
+      padding: 0;
+      margin: 0 0 .5rem 0;
     }
+
     .figCaption {
       text-align: center;
     }
-     .figCaption .__text {
-        font-family: 'Source Sans Pro';
-        font-size: 12px;
-        padding: 0 .5rem;
-      }
+
+    .figCaption .__text {
+      font-family: 'Source Sans Pro';
+      font-size: 12px;
+      padding: 0 .5rem;
+    }
+
     .circular-chart {
       display: block;
       max-width: 75px;
@@ -64,9 +67,11 @@
     .circular-chart.orange .circle {
       stroke: #ff9f00;
     }
+
     .circular-chart.blue .circle {
       stroke: #5093d5;
     }
+
     .percentage {
       fill: #085280;
       font-family: 'Source Sans Pro';

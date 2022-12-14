@@ -19,10 +19,11 @@ export class Wz1Component implements OnInit {
   selected = '';
   selectedObject: any;
   // public percentage : number = 0; 
-  @Input() percentage?: string;
+  @Input() percentage?: string = "0" ;
 
   documentGroup: FormGroup = new FormGroup({});
   verificationGroup: FormGroup = new FormGroup({});
+  approvalGroup:  FormGroup = new FormGroup({});
 
   public options: any[] = [
     {
@@ -70,7 +71,13 @@ export class Wz1Component implements OnInit {
         { contolName: 'affidavit', value: 'Affidavit', type: 'checkBox' },
         { contolName: 'dsReport', value: 'D.S Report', type: 'checkBox' },
       ],
-      completion: ['status'],
+      aproval: [
+        { contolName: 'ds_approvel', value: 'D.S Approval', type: 'checkBox' },
+      ],
+
+      completion: [
+        { contolName: 'dsReport', value: 'D.S Report', type: 'checkBox' },
+      ],
     },
     {
       id: 'PA2',
@@ -116,6 +123,9 @@ export class Wz1Component implements OnInit {
         { contolName: 'affidavit', value: 'Affidavit', type: 'checkBox' },
         { contolName: 'dsReport', value: 'D.S Report', type: 'checkBox' },
       ],
+      aproval: [
+        { contolName: 'ds_approvel', value: 'D.S Approval', type: 'checkBox' },
+      ],
       completion: ['status'],
     },
   ];
@@ -123,18 +133,20 @@ export class Wz1Component implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
   ) {
-    this.documentGroup = this._formBuilder.group({});
+    // this.documentGroup = this._formBuilder.group({});
   }
 
   onJobChange(event: any) {
     let selectedCat = event;
     this.selectedObject = this.options.find(({ id }) => id === selectedCat);
     this.genarateForm(this.selectedObject);
+    this.percentage = "0";
   }
 
   genarateForm(selectedObject: any) {
     this.documentGroup.reset();
     this.verificationGroup.reset();
+    this.approvalGroup.reset();
     selectedObject?.checkDoc.forEach((element: any) => {
       this.documentGroup?.addControl(
         element?.contolName,
@@ -142,6 +154,12 @@ export class Wz1Component implements OnInit {
       );
     });
 
+    selectedObject?.aproval.forEach((element: any) => {
+      this.approvalGroup?.addControl(
+        element?.contolName,
+        new FormControl('', Validators.required)
+      );
+    });
     selectedObject?.verification.forEach((element: any) => {
       this.verificationGroup?.addControl(
         element?.contolName,
@@ -156,21 +174,20 @@ export class Wz1Component implements OnInit {
   get formattedDashArray() {
     return this.percentage + ', 100';
   }
+
   check(): number {
     const documentGroupcontrols = this.documentGroup.controls;
     const verificationGroupcontrols = this.verificationGroup.controls;
     const invalidArr = [];
     const validArr = [];
-
-
     for (const name in documentGroupcontrols) {
+ 
       if (documentGroupcontrols[name].status === 'INVALID') {
         invalidArr.push(name);
       } else {
         validArr.push(name);
       }
     }
-
     for (const name in verificationGroupcontrols) {
       if (verificationGroupcontrols[name].status === 'INVALID') {
         invalidArr.push(name);
@@ -178,8 +195,8 @@ export class Wz1Component implements OnInit {
         validArr.push(name);
       }
     }
-    console.log(`valid count : ${validArr.length}`)
-    console.log(`invalid count : ${invalidArr.length}`)
+    // console.log(`valid count : ${validArr.length}`)
+    // console.log(`invalid count : ${invalidArr.length}`)
     const presentage = Math.round(validArr.length / (validArr.length + invalidArr.length) * 100)
     console.log(presentage)
     return presentage
