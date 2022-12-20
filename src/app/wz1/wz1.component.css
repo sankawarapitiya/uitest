@@ -1,81 +1,87 @@
-    mat-form-field {
-      overflow: auto;
-      width: 100%;
-    }
+mat-form-field {
+  overflow: auto;
+  width: 100%;
+}
 
-    .form-padding {
-      padding: 2px;
-      margin: 20px;
-    }
+.form-padding {
+  padding: 5px;
+  margin: 8px;
+}
 
-    .text-bold {
-      font-size: large;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    */ mat-select-panel mat-option.mat-option {
-      height: unset;
-    }
-
-    .mat-option-text.mat-option-text {
-      white-space: normal;
-    }
+.text-bold {
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 
-    .figure {
-      width: 100%;
-      padding: 0;
-      margin: 0 0 .5rem 0;
-    }
 
-    .figCaption {
-      text-align: center;
-    }
+.mat-option-text.mat-option-text {
+  white-space: normal;
+}
 
-    .figCaption .__text {
-      font-family: 'Source Sans Pro';
-      font-size: 12px;
-      padding: 0 .5rem;
-    }
 
-    .circular-chart {
-      display: block;
-      max-width: 75px;
-      max-height: 75px;
-      margin: 0 auto;
-    }
+.figure {
+  width: 100%;
+  padding: 0;
+  margin: 0 0 .5rem 0;
+}
 
-    .circle-bg {
-      fill: none;
-      stroke: #eee;
-      stroke-width: 3.8;
-    }
+.figCaption {
+  text-align: center;
+}
 
-    .circle {
-      fill: none;
-      stroke-width: 1.2;
-      stroke-linecap: round;
-      animation: progress 1s ease-out forwards;
-    }
+.figCaption .__text {
+  font-family: 'Source Sans Pro';
+  font-size: 12px;
+  padding: 0 .5rem;
+}
 
-    @keyframes progress {
-      0% {
-        stroke-dasharray: 0 100;
-      }
-    }
+.circular-chart {
+  display: block;
+  max-width: 75px;
+  max-height: 75px;
+  margin: 0 auto;
+}
 
-    .circular-chart.orange .circle {
-      stroke: #ff9f00;
-    }
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
 
-    .circular-chart.blue .circle {
-      stroke: #5093d5;
-    }
+.circle {
+  fill: none;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
 
-    .percentage {
-      fill: #085280;
-      font-family: 'Source Sans Pro';
-      font-size: 12px;
-      text-anchor: middle;
-      font-weight: 600;
-    }
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke: #ff9f00;
+}
+
+.circular-chart.blue .circle {
+  stroke: #5093d5;
+}
+
+.percentage {
+  fill: #085280;
+  font-family: 'Source Sans Pro';
+  font-size: 12px;
+  text-anchor: middle;
+  font-weight: 600;
+}
+
+.title h3 h5{ 
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
+  font-weight: 400;
+  padding-bottom: 0;
+  margin-bottom: 0px !important;
+}
+ 

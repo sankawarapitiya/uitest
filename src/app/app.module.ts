@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,9 +22,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
+import { JobHistoryComponent } from './wz1/job-history/job-history.component';
 
 @NgModule({
-  declarations: [AppComponent, Wz1Component],
+  declarations: [AppComponent, Wz1Component, JobHistoryComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +50,7 @@ import {MatCardModule} from '@angular/material/card';
     MatCardModule
   ],
   providers: [],
- 
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

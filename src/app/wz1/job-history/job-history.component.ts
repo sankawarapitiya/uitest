@@ -8,7 +8,7 @@ import { HistoryDetails } from '../land.data.model';
 })
 export class JobHistoryComponent implements OnInit {
 
-  @Input('data') data : HistoryDetails | undefined;
+  @Input('data') data : HistoryDetails[] | undefined;
 
   constructor() { 
    }
