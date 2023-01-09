@@ -24,8 +24,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
 import { JobHistoryComponent } from './wz1/job-history/job-history.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { LetterComponent } from './letter/letter.component';
+import { SectionComponent } from './letter/section/section.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
-  declarations: [AppComponent, Wz1Component, JobHistoryComponent],
+  declarations: [AppComponent, Wz1Component, JobHistoryComponent, LetterComponent, SectionComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,7 +53,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatProgressSpinnerModule,
     MatCardModule,
     MatChipsModule,
-    
+    MatBadgeModule,
+    MatGridListModule
     
   ],
   providers: [],
