@@ -1,0 +1,12 @@
+ 
+
+<div class="container top-bottom-space mat-elevation-z">
+  <div class="row">
+    <mat-grid-list gutterSize="5px" [cols]="breakpoint" rowHeight="100px" (window:resize)="onResize($event)">
+      <mat-grid-tile *ngFor="let sec of sections; let i = index"  >
+        <letter-section [data]="sec"></letter-section>
+        <!-- {{sec}} -->
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
