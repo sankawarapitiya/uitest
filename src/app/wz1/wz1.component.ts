@@ -96,20 +96,14 @@ export class Wz1Component implements OnInit {
       ],
       verification: [
         { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
-        {
-          contolName: 'coVerification',
-          label: 'C.O Verification',
-          value: '',
-          type: 'checkBox',
-        },
+        { contolName: 'coVerification',label: 'C.O Verification',value: '',type: 'checkBox'},
         { contolName: 'idCopy', label: 'ID Copy', value: '', type: 'checkBox' },
         { contolName: 'affidavit', label: 'Affidavit', value: '', type: 'checkBox' },
         { contolName: 'dsReport', label: 'D.S Report', value: '', type: 'checkBox' },
         { contolName: '155page', label: '155 Document', value: '', type: 'checkBox' },
       ],
-      aproval: [
-        { contolName: 'ds_approvel', label: 'D.S Approval', value: '', type: 'checkBox' },
-      ],
+      aproval: [ 
+        { contolName: 'ds_approvel', label: 'D.S Approval', value: '', type: 'checkBox' } ],
       completion: [
         { contolName: 'status', label: 'Status', value: '', type: 'checkBox' },
       ],
@@ -275,6 +269,146 @@ export class Wz1Component implements OnInit {
           type: 'checkBox',
         },
         { contolName: '154page', label: '155 Document', value: '', type: 'checkBox' },
+      ],
+      verification: [
+        { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
+        {
+          contolName: 'coVerification',
+          label: 'C.O Verification',
+          value: '',
+          type: 'checkBox',
+        },
+
+        { contolName: 'affidavit', label: 'Affidavit', value: '', type: 'checkBox' },
+        { contolName: 'dsReport', label: 'D.S Report', value: '', type: 'checkBox' },
+      ],
+      aproval: [
+        { contolName: 'ds_approvel', label: 'D.S Approval', value: '', type: 'checkBox' },
+      ],
+      completion: [
+        { contolName: 'status', label: 'Status', value: '', type: 'checkBox' },
+      ],
+    },
+    {
+      id: 'PA5',
+      category: 'නොතාරිස් පැවරුම්',
+      checkDoc: [
+        {
+          contolName: 'requestLetter',
+          label: 'Request Letter',
+          value: '',
+          type: 'checkBox',
+        },
+        
+        { contolName: 'ledger', label: 'Ledger', value: '', type: 'checkBox' },
+        { contolName: 'map', label: 'Map', value: '', type: 'checkBox' },
+        {
+          contolName: 'birthCertificate',  label: 'Birth Certificate', value: '', type: 'checkBox'},
+        { contolName: 'gnReport', label: 'G.N Report', value: '', type: 'checkBox' },
+        {
+          contolName: 'coConformation',
+          label: 'C.O Conformation',
+          value: '',
+          type: 'checkBox',
+        }        
+      ],
+      verification: [
+        { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
+        {
+          contolName: 'coVerification',
+          label: 'C.O Verification',
+          value: '',
+          type: 'checkBox',
+        },
+
+        { contolName: 'affidavit', label: 'Affidavit', value: '', type: 'checkBox' },
+        { contolName: 'dsReport', label: 'D.S Report', value: '', type: 'checkBox' },
+      ],
+      aproval: [
+        { contolName: 'ds_approvel', label: 'D.S Approval', value: '', type: 'checkBox' },
+      ],
+      completion: [
+        { contolName: 'status', label: 'Status', value: '', type: 'checkBox' },
+      ],
+    },
+    {
+      id: 'PA6',
+      category: 'ජීවිත භුක්තියභුක්තිය',
+      checkDoc: [
+        {
+          contolName: 'requestLetter',
+          label: 'Request Letter',
+          value: '',
+          type: 'checkBox',
+        },
+        {
+          contolName: 'licenseLetter',
+          label: 'License Letter',
+          value: '',
+          type: 'checkBox',
+        },
+         
+        { contolName: 'ledger', label: 'Ledger', value: '', type: 'checkBox' },
+      
+       
+        { contolName: 'gnReport', label: 'G.N Report', value: '', type: 'checkBox' },
+         {
+          contolName: 'birthCertificate',  label: 'Birth Certificate', value: '', type: 'checkBox'},
+        {
+          contolName: 'coConformation',
+          label: 'C.O Conformation',
+          value: '',
+          type: 'checkBox',
+        }        
+      ],
+      verification: [
+        { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
+        {
+          contolName: 'coVerification',
+          label: 'C.O Verification',
+          value: '',
+          type: 'checkBox',
+        },
+
+        { contolName: 'affidavit', label: 'Affidavit', value: '', type: 'checkBox' },
+        { contolName: 'dsReport', label: 'D.S Report', value: '', type: 'checkBox' },
+      ],
+      aproval: [
+        { contolName: 'ds_approvel', label: 'D.S Approval', value: '', type: 'checkBox' },
+      ],
+      completion: [
+        { contolName: 'status', label: 'Status', value: '', type: 'checkBox' },
+      ],
+    },
+    {
+      id: 'PA7',
+      category: 'බැංකු ඇපකර',
+      checkDoc: [
+        {
+          contolName: 'requestLetter',
+          label: 'Request Letter',
+          value: '',
+          type: 'checkBox',
+        },
+        {
+          contolName: 'licenseLetter',
+          label: 'License Letter',
+          value: '',
+          type: 'checkBox',
+        },
+         
+        { contolName: 'ledger', label: 'Ledger', value: '', type: 'checkBox' },
+      
+       
+        { contolName: 'gnReport', label: 'G.N Report', value: '', type: 'checkBox' },
+         {
+          contolName: 'birthCertificate',  label: 'Birth Certificate', value: '', type: 'checkBox'},
+        {
+          contolName: 'coConformation',
+          label: 'C.O Conformation',
+          value: '',
+          type: 'checkBox',
+        }        
       ],
       verification: [
         { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
