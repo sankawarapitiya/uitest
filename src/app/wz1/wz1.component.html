@@ -1,231 +1,430 @@
-<div class="row p-3 d-flex justify-content-center" style="margin-left: 2px; margin-right: 2px;">
-
-  <div class="col-md-3 card">
-    <div class="card-body">
-      <h3 class="text-center   text-bold">Customer Details</h3>
-      <form (submit)="saveBasicDetails()" [formGroup]="basicDataGroup">
-        <mat-form-field appearance="fill">
-          <mat-label>Select an option</mat-label>
-          <mat-select [(value)]="selected" (selectionChange)="onJobChange($event.value)" formControlName="category">
-            <mat-option value="{{ item.id }}" *ngFor="let item of options">
-              <p>{{ item.id }} - {{ item.category }}</p>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>NIC</mat-label>
-          <input matInput formControlName="nic" />
-          <button matSuffix mat-button><mat-icon>search</mat-icon></button>
-          <button matSuffix mat-button><mat-icon>add</mat-icon></button>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <mat-label>Full Name</mat-label>
-          <input matInput formControlName="name" />
-          <mat-hint>Autofilled!</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput formControlName="address" />
-          <mat-hint>Autofilled!</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Division</mat-label>
-          <input matInput formControlName="division" />
-          <mat-hint>Autofilled!</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Telephone Number (Ex: +9471000000)</mat-label>
-          <input matInput formControlName="tel" />
-          <mat-hint>Autofilled! (+94)</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Permit Number</mat-label>
-          <input matInput formControlName="permitNumber" />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Land Number</mat-label>
-          <input matInput formControlName="landNumber" />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Description</mat-label>
-          <input matInput formControlName="description" />
-        </mat-form-field>
-        <br />
-        <div align="end"> <button mat-raised-button type="submit" *ngIf="basic_submit_btn">Submit</button></div>
-
-      </form>
-    </div>
-  </div>
-  <div class="col-md-7">
-
-    <div class="container" *ngIf="selectedObject != null && !basic_submit_btn; else notSelected  ">
-
-      <mat-progress-bar mode="determinate" value="{{percentage}}"></mat-progress-bar>
-      <mat-stepper [linear]="isLinear" #stepper (selectionChange)="onStepChange($event)">
-        <mat-step [stepControl]="documentGroup">
-          <form [formGroup]="documentGroup">
-            <ng-template matStepLabel>Documents</ng-template>
-            <section class="example-section" [formGroup]="documentGroup">
-              <h2>Submited Documents :</h2>
-
-              <div class="row" *ngIf="selectedObject != null">
-                <div class="col-6" *ngFor="let item of selectedObject?.checkDoc; let i = index">
-                  <p>
-                    <mat-checkbox formControlName="{{ item.contolName }}" *ngIf="item.type == 'checkBox'"
-                      required="true">
-                      {{ item.label}}
-                    </mat-checkbox>
-                  </p>
-                  <mat-form-field class="example-full-width" *ngIf="item.type == 'input'">
-                    <mat-label> {{ item.label}}</mat-label>
-                    <input type="text" matInput formControlName="{{ item.contolName }}" placeholder="{{ item.label}}">
-                  </mat-form-field>
-
-                  <!-- <mat-form-field class="example-chip-list" appearance="fill" *ngIf="item.type == 'chip'">
-                    <mat-label>Favorite Fruits</mat-label>
-                    <mat-chip-grid #chipGrid aria-label="Fruit selection">
-                      <mat-chip-row *ngFor="let fruit of  item.value" (removed)="remove(fruit)">
-                        {{fruit}}
-                        <button matChipRemove [attr.aria-label]="'remove ' + fruit">
-                          <mat-icon>cancel</mat-icon>
-                        </button>
-                      </mat-chip-row>
-                    </mat-chip-grid>
-                    <input placeholder="New Fruit..." #fruitInput [formControl]="fruitCtrl"
-      [matChipInputFor]="chipGrid" [matAutocomplete]="auto"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)"/>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
-        {{fruit}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field> -->
+<mat-tab-group fitInkBarToContent>
+    <mat-tab label="Add New">
 
 
+        <div class="container bg-color">
+            <div class="row p-3 d-flex justify-content-center">
+
+
+                <div class="col-md-3 card">
+                    <div class="card-body">
+                        <h3 class="text-center   text-bold">Customer Details</h3>
+                        <form
+                            (submit)="saveBasicDetails()"
+                            [formGroup]="basicDataGroup"
+                        >
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select an option</mat-label>
+                                <mat-select
+                                    [(value)]="selected"
+                                    (selectionChange)="onJobChange($event.value)"
+                                    formControlName="category"
+                                >
+                                    <mat-option
+                                        value="{{ item.id }}"
+                                        *ngFor="let item of options"
+                                    >
+                                        <p>{{ item.id }} - {{ item.category }}</p>
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>NIC</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="nic"
+                                >
+                                <button
+                                    matSuffix
+                                    mat-button
+                                >
+                                    <mat-icon>search</mat-icon>
+                                </button>
+                                <button
+                                    matSuffix
+                                    mat-button
+                                >
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Full Name</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="name"
+                                >
+                                <mat-hint>Autofilled!</mat-hint>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Address</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="address"
+                                >
+                                <mat-hint>Autofilled!</mat-hint>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Division</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="division"
+                                >
+                                <mat-hint>Autofilled!</mat-hint>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Telephone Number (Ex: +9471000000)</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="tel"
+                                >
+                                <mat-hint>Autofilled! (+94)</mat-hint>
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Permit Number</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="permitNumber"
+                                >
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Land Number</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="landNumber"
+                                >
+                            </mat-form-field>
+
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Description</mat-label>
+                                <input
+                                    matInput
+                                    formControlName="description"
+                                >
+                            </mat-form-field>
+                            <br>
+                            <div align="end">
+                                <button
+                                    mat-raised-button
+                                    type="submit"
+                                    *ngIf="basic_submit_btn"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+
+
+                        </form>
+                    </div>
                 </div>
-                <div align="end">
-                  <button mat-button color="accent" (click)="save()">Save</button>
-                  <button mat-button matStepperNext>Next</button>
-                </div>
-              </div>
-            </section>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="verificationGroup" label="Reports">
-          <form [formGroup]="verificationGroup">
-            <section class="example-section" [formGroup]="verificationGroup">
-              <div class="row" *ngIf="selectedObject != null">
-                <div class="col-6" *ngFor="
+                <div class="col-md-7">
+
+
+                    <div
+                        class="container"
+                        *ngIf="selectedObject != null && !basic_submit_btn; else notSelected  "
+                    >
+
+
+                        <mat-progress-bar
+                            mode="determinate"
+                            value="{{percentage}}"
+                        ></mat-progress-bar>
+                        <mat-stepper
+                            [linear]="isLinear"
+                            #stepper
+                            (selectionChange)="onStepChange($event)"
+                        >
+                            <mat-step [stepControl]="documentGroup">
+                                <form [formGroup]="documentGroup">
+                                    <ng-template matStepLabel>Documents</ng-template>
+                                    <section
+                                        class="example-section"
+                                        [formGroup]="documentGroup"
+                                    >
+                                        <h2>Submited Documents :</h2>
+
+
+                                        <div
+                                            class="row"
+                                            *ngIf="selectedObject != null"
+                                        >
+                                            <div
+                                                class="col-6"
+                                                *ngFor="let item of selectedObject?.checkDoc; let i = index"
+                                            >
+                                                <p>
+                                                    <mat-checkbox
+                                                        formControlName="{{ item.contolName }}"
+                                                        *ngIf="item.type == 'checkBox'"
+                                                        required="true"
+                                                    >
+                                                        {{ item.label}}
+                                                    </mat-checkbox>
+                                                </p>
+                                                <mat-form-field
+                                                    class="example-full-width"
+                                                    *ngIf="item.type == 'input'"
+                                                >
+                                                    <mat-label>{{ item.label}}</mat-label>
+                                                    <input
+                                                        type="text"
+                                                        matInput
+                                                        formControlName="{{ item.contolName }}"
+                                                        placeholder="{{ item.label}}"
+                                                    >
+                                                </mat-form-field>
+
+
+
+                                            </div>
+                                            <div align="end">
+                                                <button
+                                                    mat-button
+                                                    color="accent"
+                                                    (click)="save()"
+                                                >
+                                                    Save
+                                                </button>
+                                                <button
+                                                    mat-button
+                                                    matStepperNext
+                                                >
+                                                    Next
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </form>
+                            </mat-step>
+                            <mat-step
+                                [stepControl]="verificationGroup"
+                                label="Reports"
+                            >
+                                <form [formGroup]="verificationGroup">
+                                    <section
+                                        class="example-section"
+                                        [formGroup]="verificationGroup"
+                                    >
+                                        <div
+                                            class="row"
+                                            *ngIf="selectedObject != null"
+                                        >
+                                            <div
+                                                class="col-6"
+                                                *ngFor="
                 let verify of selectedObject?.verification;
-                let i = index">
-                  <p>
-                    <mat-checkbox formControlName="{{ verify?.contolName }}" required>
-                      {{ verify.label }}
-                    </mat-checkbox>
-                  </p>
-                </div>
-              </div>
-            </section>
+                let i = index"
+                                            >
+                                                <p>
+                                                    <mat-checkbox
+                                                        formControlName="{{ verify?.contolName }}"
+                                                        required
+                                                    >
+                                                        {{ verify.label }}
+                                                    </mat-checkbox>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </section>
 
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button color="accent" (click)="save()">Save</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
-        </mat-step>
 
-        <mat-step [stepControl]="approvalGroup" label="Approval">
-          <form [formGroup]="approvalGroup">
-            <section class="example-section" [formGroup]="approvalGroup">
-              <div class="row" *ngIf="selectedObject != null">
-                <div class="col-6" *ngFor="
+                                    <div>
+                                        <button
+                                            mat-button
+                                            matStepperPrevious
+                                        >
+                                            Back
+                                        </button>
+                                        <button
+                                            mat-button
+                                            color="accent"
+                                            (click)="save()"
+                                        >
+                                            Save
+                                        </button>
+                                        <button
+                                            mat-button
+                                            matStepperNext
+                                        >
+                                            Next
+                                        </button>
+                                    </div>
+                                </form>
+                            </mat-step>
+
+
+                            <mat-step
+                                [stepControl]="approvalGroup"
+                                label="Approval"
+                            >
+                                <form [formGroup]="approvalGroup">
+                                    <section
+                                        class="example-section"
+                                        [formGroup]="approvalGroup"
+                                    >
+                                        <div
+                                            class="row"
+                                            *ngIf="selectedObject != null"
+                                        >
+                                            <div
+                                                class="col-6"
+                                                *ngFor="
                 let aproval of selectedObject?.aproval;
-                let i = index">
-                  <p>
-                    <mat-checkbox formControlName="{{ aproval?.contolName }}" required="{{aprovel.value}">
-                      {{ aproval.label }}
-                    </mat-checkbox>
-                  </p>
+                let i = index"
+                                            >
+                                                <p>
+                                                    <mat-checkbox
+                                                        formControlName="{{ aproval?.contolName }}"
+                                                        required="{{aprovel.value}"
+                                                    >
+                                                        {{ aproval.label }}
+                                                    </mat-checkbox>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </section>
+
+
+                                    <div align="end">
+                                        <button
+                                            mat-button
+                                            matStepperPrevious
+                                        >
+                                            Back
+                                        </button>
+                                        <button
+                                            mat-button
+                                            color="accent"
+                                            (click)="save()"
+                                        >
+                                            Save
+                                        </button>
+                                        <button
+                                            mat-button
+                                            matStepperNext
+                                        >
+                                            Next
+                                        </button>
+                                    </div>
+                                </form>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>Done</ng-template>
+                                <div class="container">
+                                    <h2>Waiting for submit</h2>
+                                </div>
+                                <div align="end">
+                                    <button
+                                        mat-button
+                                        matStepperPrevious
+                                    >
+                                        Back
+                                    </button>
+                                    <button
+                                        mat-button
+                                        color="accent"
+                                        (click)="save()"
+                                    >
+                                        Save
+                                    </button>
+
+
+                                </div>
+                            </mat-step>
+                        </mat-stepper>
+
+
+                    </div>
+                    <ng-template #notSelected>
+                        <div class="text-center mt-4">
+                            <h1>
+                                Please Select category
+                                <br>
+                                <b>&</b>
+                                <br>
+                                <q>Fill with details about customer</q>
+                            </h1>
+                        </div>
+                    </ng-template>
+
+
                 </div>
-              </div>
-            </section>
 
-            <div align="end">
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button color="accent" (click)="save()">Save</button>
-              <button mat-button matStepperNext>Next</button>
+
+                <div class="col-md-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Task Completion</h4>
+                            <figure class="figure">
+                                <ng-container *ngIf="percentage; else noValue">
+                                    <svg
+                                        viewBox="0 0 36 36"
+                                        class="circular-chart blue"
+                                    >
+                                        <title>
+                                            Percentage chart showing confidence level for this appraisal at {{percentage}}%
+                                        </title>
+                                        <path
+                                            class="circle-bg"
+                                            d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        ></path>
+                                        <path
+                                            class="circle"
+                                            [attr.stroke-dasharray]="formattedDashArray"
+                                            d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+                                        ></path>
+                                        <text
+                                            x="18"
+                                            y="22.35"
+                                            class="percentage"
+                                        >
+                                            {{percentage}}%
+                                        </text>
+                                    </svg>
+                                </ng-container>
+                                <ng-template #noValue>No Value</ng-template>
+                            </figure>
+                        </div>
+                    </div>
+
+
+                    <div class="card pt-2 mt-2">
+                        <div class="card-body">
+                            <p class="card-text">
+                                <app-job-history [data]="histories"></app-job-history>
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+ 
             </div>
-          </form>
-        </mat-step>
-        <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <div class="container">
-            <h2>You are now done.</h2>
-          </div>
-          <div align="end">
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button color="accent" (click)="save()">Save</button>
+        </div>
+    </mat-tab>
+    <mat-tab label="Job List">
 
-          </div>
-        </mat-step>
-      </mat-stepper>
-
-    </div>
-    <ng-template #notSelected>
-      <div class="text-center mt-4">
-        <h1>Please Select category
-          <br>
-          <b>& </b>
-          <br>
-          <q>Fill with details about customer</q>
-        </h1>
-      </div>
-    </ng-template>
-
-  </div>
-
-  <div class="col-md-2">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title text-center" >Task Completion</h4>
-        <figure class="figure">
-          <ng-container *ngIf="percentage; else noValue">
-            <svg viewBox="0 0 36 36" class="circular-chart blue">
-              <title>Percentage chart showing confidence level for this appraisal at {{percentage}}%</title>
-              <path class="circle-bg" d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path class="circle" [attr.stroke-dasharray]="formattedDashArray" d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <text x="18" y="22.35" class="percentage">{{percentage}}%</text>
-            </svg>
-          </ng-container>
-          <ng-template #noValue>
-            No Value
-          </ng-template>
-        </figure>
-      </div>
-    </div>
-
-    <div class="card pt-2 mt-2">
-      <div class="card-body">
-        <p class="card-text">
-          <app-job-history [data]="histories"></app-job-history>
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-
-</div>
+        {{jobCard | json}}
+    </mat-tab>
+    <mat-tab label="Third">Content 3</mat-tab>
+    <mat-tab  label="Fourth"  disabled>
+    
+    </mat-tab>
+</mat-tab-group>

@@ -543,7 +543,8 @@ export class Wz1Component implements OnInit {
     this.jobCard.documents = this.documentGroup.value;
     this.jobCard.reports = this.verificationGroup.value;
     this.jobCard.approvel = this.approvalGroup.value;
-    this.jobCard = this.basicDataGroup.value
+    this.jobCard = this.basicDataGroup.value;
+    this.jobCard.completePresentage = this.percentage;
     this.onStepChange('');
 
   }
@@ -554,7 +555,8 @@ export class Wz1Component implements OnInit {
       this.basicDataGroup.disable()
       this.basic_submit_btn = false
       window.scrollTo({ top: 0 })
-      this.jobCard = this.basicDataGroup.value
+      this.jobCard = this.basicDataGroup.value;
+      this.jobCard.completePresentage = this.percentage;
     }
 
   }
