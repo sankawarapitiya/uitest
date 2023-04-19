@@ -1,8 +1,8 @@
 import { AutofillMonitor } from '@angular/cdk/text-field';
 import { Component, Input, OnInit } from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import { MatChipInputEvent,} from '@angular/material/chips';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent, } from '@angular/material/chips';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import {
   AbstractControl,
   FormArray,
@@ -27,7 +27,7 @@ export class Wz1Component implements OnInit {
   allFruits: string[] = ['Apple', 'Lemon', 'Lime', 'Orange', 'Strawberry'];
 
   isLinear = false;
- 
+
   selectedObject: any;
   // public percentage : number = 0; 
   percentage?: string = "0";
@@ -96,14 +96,14 @@ export class Wz1Component implements OnInit {
       ],
       verification: [
         { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
-        { contolName: 'coVerification',label: 'C.O Verification',value: '',type: 'checkBox'},
+        { contolName: 'coVerification', label: 'C.O Verification', value: '', type: 'checkBox' },
         { contolName: 'idCopy', label: 'ID Copy', value: '', type: 'checkBox' },
         { contolName: 'affidavit', label: 'Affidavit', value: '', type: 'checkBox' },
         { contolName: 'dsReport', label: 'D.S Report', value: '', type: 'checkBox' },
         { contolName: '155page', label: '155 Document', value: '', type: 'checkBox' },
       ],
-      aproval: [ 
-        { contolName: 'ds_approvel', label: 'D.S Approval', value: '', type: 'checkBox' } ],
+      aproval: [
+        { contolName: 'ds_approvel', label: 'D.S Approval', value: '', type: 'checkBox' }],
       completion: [
         { contolName: 'status', label: 'Status', value: '', type: 'checkBox' },
       ],
@@ -299,18 +299,19 @@ export class Wz1Component implements OnInit {
           value: '',
           type: 'checkBox',
         },
-        
+
         { contolName: 'ledger', label: 'Ledger', value: '', type: 'checkBox' },
         { contolName: 'map', label: 'Map', value: '', type: 'checkBox' },
         {
-          contolName: 'birthCertificate',  label: 'Birth Certificate', value: '', type: 'checkBox'},
+          contolName: 'birthCertificate', label: 'Birth Certificate', value: '', type: 'checkBox'
+        },
         { contolName: 'gnReport', label: 'G.N Report', value: '', type: 'checkBox' },
         {
           contolName: 'coConformation',
           label: 'C.O Conformation',
           value: '',
           type: 'checkBox',
-        }        
+        }
       ],
       verification: [
         { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
@@ -347,19 +348,20 @@ export class Wz1Component implements OnInit {
           value: '',
           type: 'checkBox',
         },
-         
+
         { contolName: 'ledger', label: 'Ledger', value: '', type: 'checkBox' },
-      
-       
+
+
         { contolName: 'gnReport', label: 'G.N Report', value: '', type: 'checkBox' },
-         {
-          contolName: 'birthCertificate',  label: 'Birth Certificate', value: '', type: 'checkBox'},
+        {
+          contolName: 'birthCertificate', label: 'Birth Certificate', value: '', type: 'checkBox'
+        },
         {
           contolName: 'coConformation',
           label: 'C.O Conformation',
           value: '',
           type: 'checkBox',
-        }        
+        }
       ],
       verification: [
         { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
@@ -396,19 +398,20 @@ export class Wz1Component implements OnInit {
           value: '',
           type: 'checkBox',
         },
-         
+
         { contolName: 'ledger', label: 'Ledger', value: '', type: 'checkBox' },
-      
-       
+
+
         { contolName: 'gnReport', label: 'G.N Report', value: '', type: 'checkBox' },
-         {
-          contolName: 'birthCertificate',  label: 'Birth Certificate', value: '', type: 'checkBox'},
+        {
+          contolName: 'birthCertificate', label: 'Birth Certificate', value: '', type: 'checkBox'
+        },
         {
           contolName: 'coConformation',
           label: 'C.O Conformation',
           value: '',
           type: 'checkBox',
-        }        
+        }
       ],
       verification: [
         { contolName: 'dsReport', label: 'DS Report', value: '', type: 'checkBox' },
@@ -431,10 +434,10 @@ export class Wz1Component implements OnInit {
     },
   ];
 
-  histories: HistoryDetails[] = [ {title: 'Created By',createdBy:'ABC',date: new Date(),id:1 },
-  {title: 'Created By',createdBy:'ABC',date: new Date(),id:1 },
-  {title: 'Created By',createdBy:'ABC',date: new Date(),id:1 },
-  {title: 'Created By',createdBy:'ABC',date: new Date(),id:1 }];
+  histories: HistoryDetails[] = [{ title: 'Created By', createdBy: 'ABC', date: new Date(), id: 1 },
+  { title: 'Created By', createdBy: 'ABC', date: new Date(), id: 1 },
+  { title: 'Created By', createdBy: 'ABC', date: new Date(), id: 1 },
+  { title: 'Created By', createdBy: 'ABC', date: new Date(), id: 1 }];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -506,7 +509,7 @@ export class Wz1Component implements OnInit {
   check(): number {
     const documentGroupcontrols = this.documentGroup.controls;
     const verificationGroupcontrols = this.verificationGroup.controls;
-  const approvelGroupControls =  this.approvalGroup.controls;
+    const approvelGroupControls = this.approvalGroup.controls;
     const invalidArr = [];
     const validArr = [];
     for (const name in documentGroupcontrols) {
@@ -522,7 +525,7 @@ export class Wz1Component implements OnInit {
       } else {
         validArr.push(name);
       }
-      
+
     }
     for (const name in approvelGroupControls) {
       if (approvelGroupControls[name].status === 'INVALID') {
@@ -544,6 +547,7 @@ export class Wz1Component implements OnInit {
     this.jobCard.reports = this.verificationGroup.value;
     this.jobCard.approvel = this.approvalGroup.value;
     this.jobCard = this.basicDataGroup.value
+    console.log(JSON.stringify(this.jobCard));
     this.onStepChange('');
 
   }
@@ -613,7 +617,7 @@ export class Wz1Component implements OnInit {
     }
   }
 
- 
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
