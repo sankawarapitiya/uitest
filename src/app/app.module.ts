@@ -28,6 +28,8 @@ import { LetterComponent } from './letter/letter.component';
 import { SectionComponent } from './letter/section/section.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
+
 @NgModule({
   declarations: [AppComponent, Wz1Component, JobHistoryComponent, LetterComponent, SectionComponent],
   imports: [
@@ -54,7 +56,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCardModule,
     MatChipsModule,
     MatBadgeModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTabsModule
     
   ],
   providers: [],
